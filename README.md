@@ -7,6 +7,8 @@ Ordereze Task, Azure Blob Storage
 4. Adding Class 'ImageRepository.cs' into Repositories Folder, which is implementation of IImageService interface
 5. Adding class 'BlobService.cs', in order to upload and delete images from BlobStorage
 6. Adding 'add key="StorageConnStr"' in Web.config, in order to create Blob Storage Account
+7. Adding controller 'ImagesController.cs' into Controllers Folder, which is responsible for responding to requests
+8. Adding views (Index, Create, Delete) into Views Folder
    
 
 
