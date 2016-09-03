@@ -18,12 +18,11 @@ namespace OrderezeTask
             //Create Cloud blob service client
             CloudBlobClient BlobClient = StorageAccount.CreateCloudBlobClient();
             //Reference to a created container. Container is created to hold Blobs
-            CloudBlobContainer BlobContainer = BlobClient.GetContainerReference("ImagesBlob");
-            //If container is not exist, create one and set all the required public access permissions.
-            if (BlobContainer.CreateIfNotExists())
-            {
-                BlobContainer.SetPermissions(new BlobContainerPermissions { PublicAccess = BlobContainerPublicAccessType.Blob });
-            }
+            CloudBlobContainer BlobContainer = BlobClient.GetContainerReference("imagesblob");
+            // Create the container if it doesn't already exist.
+            BlobContainer.CreateIfNotExists();
+            //Set all the required public access permissions.
+            BlobContainer.SetPermissions(new BlobContainerPermissions { PublicAccess = BlobContainerPublicAccessType.Blob });
             return BlobContainer;
         }
 
