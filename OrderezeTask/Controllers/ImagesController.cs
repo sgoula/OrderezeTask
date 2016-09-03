@@ -58,16 +58,16 @@ namespace OrderezeTask.Controllers
         // GET: Images/Delete
         public ActionResult Delete(int id)
         {
-            if (id == null)
-            {
-                return null;
-            }
-            else
+            try
             {
                 //Return Image Information
                 Image ImageInfo = _iimageservice.GetImageInfo(id);
                 return View(ImageInfo);
-            }            
+            }
+            catch
+            {
+                return null;
+            }
         }
 
         // POST: Images/Delete/5
@@ -85,6 +85,7 @@ namespace OrderezeTask.Controllers
 
                 //Delete Image from database
                 _iimageservice.DeleteImage(id);
+                
                 return RedirectToAction("Index");
             }
             catch
