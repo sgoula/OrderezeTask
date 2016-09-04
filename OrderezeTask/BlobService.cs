@@ -20,9 +20,11 @@ namespace OrderezeTask
             //Reference to a created container. Container is created to hold Blobs
             CloudBlobContainer BlobContainer = BlobClient.GetContainerReference("imagesblob");
             // Create the container if it doesn't already exist.
-            BlobContainer.CreateIfNotExists();
-            //Set all the required public access permissions.
-            BlobContainer.SetPermissions(new BlobContainerPermissions { PublicAccess = BlobContainerPublicAccessType.Blob });
+            if (BlobContainer.CreateIfNotExists())
+            {
+                //Set all the required public access permissions.
+                BlobContainer.SetPermissions(new BlobContainerPermissions { PublicAccess = BlobContainerPublicAccessType.Blob });
+            }
             return BlobContainer;
         }
 
